@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "1780755249785",
+    "stress": 5,
+    "sleep": 7,
+    "mood": "Happy",
+    "activity": 2,
+    "water": 2.5,
+    "studyHours": 6,
+    "familyInteraction": 3,
+    "screenTime": 4,
+    "date": "2026-06-06T14:14:09.785Z"
+  },
+  {
+    "_id": "1780759312934",
+    "stress": 6,
+    "sleep": 8,
+    "mood": "Neutral",
+    "activity": 2,
+    "water": 8,
+    "studyHours": 3,
+    "familyInteraction": 4,
+    "screenTime": 7,
+    "date": "2026-06-06T15:21:52.935Z"
+  }
+]
