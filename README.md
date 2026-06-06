@@ -6,7 +6,8 @@
 ![Express](https://img.shields.io/badge/Express.js-Framework-black?logo=express)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb)
 ![Chart.js](https://img.shields.io/badge/Chart.js-Visualization-FF6384?logo=chartdotjs)
-![GitHub stars](https://img.shields.io/github/stars/David-Antony/Student-Wellness-Analytics)
+![GitHub forks](https://img.shields.io/github/forks/David-Antony/Student-Wellness-Analytics)
+![GitHub license](https://img.shields.io/github/license/David-Antony/Student-Wellness-Analytics)
 
 An intelligent, data-driven wellness monitoring and analytics platform designed to help students track, analyze, and improve their daily habits, mental well-being, and overall lifestyle through interactive visual insights and personalized feedback.
 
