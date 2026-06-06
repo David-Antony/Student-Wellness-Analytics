@@ -1,5 +1,13 @@
 # 🎓 Student Wellness Data Analytics
 
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-Frontend-646CFF?logo=vite)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js)
+![Express](https://img.shields.io/badge/Express.js-Framework-black?logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb)
+![Chart.js](https://img.shields.io/badge/Chart.js-Visualization-FF6384?logo=chartdotjs)
+![GitHub stars](https://img.shields.io/github/stars/David-Antony/Student-Wellness-Analytics)
+
 An intelligent, data-driven wellness monitoring and analytics platform designed to help students track, analyze, and improve their daily habits, mental well-being, and overall lifestyle through interactive visual insights and personalized feedback.
 
 ---
