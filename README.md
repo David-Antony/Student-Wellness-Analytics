@@ -11,7 +11,7 @@ An intelligent, data-driven wellness monitoring and analytics platform designed 
 
 ---
 
-# 2. Overview
+## 2. Overview
 
 **Student Wellness Data Analytics** is a modern full-stack wellness tracking application that enables students to monitor key lifestyle indicators such as stress levels, sleep patterns, mood, study hours, water intake, physical activity, screen time, and family/social interactions.
 
@@ -23,33 +23,28 @@ Using **Chart.js**, the platform generates dynamic dashboards, trend analyses, b
 
 ---
 
-# 3. Features
+## 3. Features
 
 ### 📝 Daily Wellness Check (Survey Form)
-
 * A responsive and user-friendly wellness assessment form designed to capture 8 essential health and lifestyle indicators.
 * Features intuitive emoji-based interactions and validation for:
-
-  * Stress Levels
-  * Sleep Duration
-  * Physical Activity
-  * Water Intake
-  * Study Hours
-  * Family Interaction
-  * Screen Time
-  * Mood Tracking
+  * Stress Levels 😰
+  * Sleep Duration 😴
+  * Physical Activity 🏃
+  * Water Intake 💧
+  * Study Hours 📚
+  * Family Interaction 👨‍👩‍👧
+  * Screen Time 💻
+  * Mood Tracking 😊
 
 ### 📊 Predictive Recommendations & Feedback
-
 * Instant analysis of submitted wellness data against recommended healthy benchmarks.
 * Generates intelligent feedback and actionable recommendations.
 * Dynamic color-coded alerts:
-
   * 🔴 High-risk habit notifications
   * 🟢 Healthy achievement indicators
 
 ### 📈 Interactive Analytics Dashboard
-
 * **Summary Cards:** Displays overall averages for stress, sleep, activity, study, family, and water.
 * **Mood Distribution:** A colorful *Pie Chart* displaying mood fluctuations (Happy, Neutral, Stressed, Sad).
 * **Sleep Distribution:** A *Doughnut Chart* grouping sleep hours into ranges (0-4h, 5-6h, 7-8h, 9+h).
@@ -61,26 +56,118 @@ Using **Chart.js**, the platform generates dynamic dashboards, trend analyses, b
 * **Happiness Index:** A circular *Gauge (Doughnut) Chart* computing a holistic wellness score based on balanced lifestyle ratios.
 
 ### 🔄 Resilient Database Fallback System
-
 * Automatically performs data operations using MongoDB when available.
 * Seamlessly falls back to a local JSON database (`server/data.json`) if MongoDB becomes unavailable.
 * Ensures continuous functionality and zero data collection interruptions.
 
 ---
 
-# 4. Tech Stack
+## 4. Tech Stack
 
-## 🎨 Frontend
-
+### 🎨 Frontend
 * **Core:** React.js (v18.3.1) & Vite
 * **Styling:** Tailwind CSS (v4)
 * **Routing:** React Router DOM (v7)
 * **HTTP Client:** Axios
 * **Visualization:** Chart.js & React Chartjs 2
 
-## ⚙️ Backend
-
+### ⚙️ Backend
 * **Runtime:** Node.js & Express.js
 * **Database ODM:** Mongoose & MongoDB
 * **File Database:** Node.js native filesystem modules (`fs`, `path`) for local JSON fallback
 * **Security:** Prepared with `bcryptjs` and `jsonwebtoken` for future authentication
+
+---
+
+## 5. Installation & Running the Project
+
+### Prerequisites
+*   [Node.js](https://nodejs.org/) (v16.0.0 or higher)
+*   [MongoDB Community Server](https://www.mongodb.com/try/download/community) (Optional - falls back to local JSON database automatically)
+
+### Setup Steps
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/David-Antony/Student-Wellness-Analytics.git
+    cd Student-Wellness-Analytics
+    ```
+
+---
+
+### Option A: The Quick Start (Single Command - Recommended) 🚀
+
+This method installs dependencies and runs both the **frontend** and **backend** concurrently using a single terminal window.
+
+1.  **Install All Dependencies:**
+    From the root directory, run the following command to install all packages for the root, client, and server:
+    ```bash
+    npm run install-all
+    ```
+
+2.  **Start Both Frontend & Backend:**
+    Launch both servers simultaneously with:
+    ```bash
+    npm run dev
+    ```
+    *   **Frontend (React/Vite):** Runs on [http://localhost:5173](http://localhost:5173)
+    *   **Backend (Express):** Runs on [http://localhost:8000](http://localhost:8000)
+
+---
+
+### Option B: Manual Start (Separate Terminals) 💻
+
+If you prefer to run and view logs for the client and server in separate terminal windows, follow these steps:
+
+#### 1. Start the Backend Server
+1. Navigate to the `server` directory:
+   ```bash
+   cd server
+   ```
+2. Install server dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server (runs on Port `8000`):
+   ```bash
+   npm run dev
+   ```
+
+#### 2. Start the Frontend Client
+1. Open a new terminal window and navigate to the `client` directory:
+   ```bash
+   cd client
+   ```
+2. Install client dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development client (launches on Port `5173`):
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 6. Screenshots
+
+| Daily Wellness Check Form | Wellness Insights Dashboard |
+| --- | --- |
+| ![Survey Form Placeholder](./client/src/banner.png) | ![Analytics Dashboard Placeholder](./client/src/banner.png) |
+
+---
+
+## 7. Live Demo
+
+The project is hosted and can be viewed live at:  
+👉 **[Live Demo URL](https://your-live-demo-link.com)** *(Placeholder)*
+
+---
+
+## 8. Future Improvements
+
+*   **User Profiles & Secure Authentication:** Fully implement JWT and Bcryptjs for secure logins, allowing students to keep their wellness logs private.
+*   **Custom Date Range Filtering:** Add calendar-based filters to analyze trends over a specific week, month, or semester.
+*   **Report Generation:** Provide an option to export weekly wellness summaries as PDF or CSV reports.
+*   **Goal Tracking & Streaks:** Gamify healthy habits by rewarding students with streaks for hitting water, sleep, and exercise goals.
+*   **Stress Alerts:** Email or push notification prompts when sleep dips too low or stress levels remain high for consecutive days.
