@@ -157,23 +157,18 @@ function SurveyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 relative overflow-x-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-200/50 blur-[100px] -z-10"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10"></div>
 
       {/* ===== Hero Section ===== */}
-      <header className="pt-20 pb-12 px-6 flex flex-col items-center justify-center text-center">
+      <header className="relative z-10 pt-20 pb-12 px-6 flex flex-col items-center justify-center text-center">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
-            <span className="text-sm font-medium bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              v2.0 UI Revamp
-            </span>
-          </div>
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
             Student Wellness <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
