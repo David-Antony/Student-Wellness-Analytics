@@ -1,5 +1,19 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Brain, 
+  Moon, 
+  Dumbbell, 
+  Droplets, 
+  BookOpen, 
+  Users, 
+  Monitor, 
+  Smile, 
+  ArrowRight,
+  AlertCircle,
+  CheckCircle2
+} from "lucide-react";
 import Dashboard from "./Dashboard";
 
 function SurveyPage() {
@@ -49,15 +63,21 @@ function SurveyPage() {
         familyInteraction: "",
         screenTime: "",
       });
+      
+      // Smooth scroll to results
+      setTimeout(() => {
+        document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      
     } catch (err) {
       console.error(err);
     }
   };
 
   const getStressColor = (level) => {
-    if (level >= 8) return "bg-red-300 text-red-800";
-    if (level >= 5) return "bg-yellow-300 text-yellow-800";
-    return "bg-green-300 text-green-800";
+    if (level >= 8) return "bg-red-100 text-red-700 border-red-200";
+    if (level >= 5) return "bg-amber-100 text-amber-700 border-amber-200";
+    return "bg-emerald-100 text-emerald-700 border-emerald-200";
   };
 
   const getPredictiveSuggestions = (data) => {
@@ -126,129 +146,196 @@ function SurveyPage() {
     return predictions;
   };
 
+  const fields = [
+    { label: "Stress Level (1-10)", name: "stress", min: 1, max: 10, icon: <Brain className="text-indigo-500" /> },
+    { label: "Sleep Hours", name: "sleep", min: 0, max: 24, icon: <Moon className="text-indigo-500" /> },
+    { label: "Physical Activity (hrs)", name: "activity", min: 0, max: 24, icon: <Dumbbell className="text-indigo-500" /> },
+    { label: "Water Intake (liters)", name: "water", min: 0, max: 10, step: 0.1, icon: <Droplets className="text-indigo-500" /> },
+    { label: "Study Hours", name: "studyHours", min: 0, max: 24, icon: <BookOpen className="text-indigo-500" /> },
+    { label: "Family Interaction (hrs)", name: "familyInteraction", min: 0, max: 24, icon: <Users className="text-indigo-500" /> },
+    { label: "Screen Time (hrs)", name: "screenTime", min: 0, max: 24, icon: <Monitor className="text-indigo-500" /> },
+  ];
+
   return (
-    <div className="min-h-screen bg-blue-900 font-sans p-10">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-200/50 blur-[100px] -z-10"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10"></div>
+
       {/* ===== Hero Section ===== */}
-      <header className="relative h-64 bg-gradient-to-r from-blue-400 to-blue-800 flex items-center justify-center text-white rounded-b-3xl shadow-lg mb-10">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold drop-shadow-lg">
-            Student Wellness Dashboard
+      <header className="pt-20 pb-12 px-6 flex flex-col items-center justify-center text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
+            <span className="text-sm font-medium bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              v2.0 UI Revamp
+            </span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+            Student Wellness <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
+              Analytics
+            </span>
           </h1>
-          <p className="mt-2 text-lg drop-shadow-md">
-            Track your wellness and get personalized recommendations 
+          <p className="max-w-2xl text-lg text-slate-600 mb-8 mx-auto">
+            Track your daily habits, understand your emotional well-being, and get AI-driven personalized recommendations to improve your academic and personal life.
           </p>
-        </div>
+          <Link
+            to="/dashboard"
+            className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:-translate-y-0.5 transition-all duration-300"
+          >
+            View Dashboard Analytics <ArrowRight size={18} />
+          </Link>
+        </motion.div>
       </header>
 
-      {/* ===== Navigation ===== */}
-      <nav className="flex justify-center mb-10">
-        <Link
-          to="/dashboard"
-          className="bg-white text-blue-800 font-semibold px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all"
-        >
-          Go to Dashboard
-        </Link>
-      </nav>
-
       {/* ===== Survey Form ===== */}
-      <div className="flex justify-center mb-12">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-xl space-y-6 border border-blue-100 hover:scale-105 transform transition-all"
+      <main className="px-6 pb-24 max-w-3xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="glass-panel p-8 md:p-12 rounded-[2rem] shadow-xl"
         >
-          <h3 className="text-2xl font-bold text-blue-800 mb-4 text-center">
-            Daily Wellness Check
-          </h3>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-slate-800">Daily Wellness Check</h2>
+            <p className="text-slate-500 mt-2">Log your daily metrics to receive insights.</p>
+          </div>
 
-          {[
-            { label: "Stress Level (1-10):", name: "stress", min: 1, max: 10, icon: "😰" },
-            { label: "Sleep Hours:", name: "sleep", min: 0, max: 24, icon: "😴" },
-            { label: "Physical Activity (hrs):", name: "activity", min: 0, max: 24, icon: "🏃" },
-            { label: "Water Intake (liters):", name: "water", min: 0, max: 10, step: 0.1, icon: "💧" },
-            { label: "Study Hours:", name: "studyHours", min: 0, max: 24, icon: "📚" },
-            { label: "Family Interaction (hrs):", name: "familyInteraction", min: 0, max: 24, icon: "👨‍👩‍👧" },
-            { label: "Screen Time (hrs):", name: "screenTime", min: 0, max: 24, icon: "💻" },
-          ].map((field) => (
-            <div key={field.name} className="flex items-center gap-3">
-              <span className="text-2xl">{field.icon}</span>
-              <div className="w-full">
-                <label className="block mb-1 font-semibold text-gray-700">{field.label}</label>
-                <input
-                  type="number"
-                  name={field.name}
-                  min={field.min}
-                  max={field.max}
-                  step={field.step || 1}
-                  value={form[field.name]}
-                  onChange={handleChange}
-                  className="border p-2 w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                  required
-                />
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {fields.map((field, idx) => (
+                <div key={field.name} className="relative group">
+                  <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                    {field.icon}
+                    {field.label}
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name={field.name}
+                      min={field.min}
+                      max={field.max}
+                      step={field.step || 1}
+                      value={form[field.name]}
+                      onChange={handleChange}
+                      placeholder="0"
+                      className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                      required
+                    />
+                  </div>
+                </div>
+              ))}
+
+              <div className="relative group md:col-span-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                  <Smile className="text-indigo-500" />
+                  Overall Mood
+                </label>
+                <div className="relative">
+                  <select
+                    name="mood"
+                    value={form.mood}
+                    onChange={handleChange}
+                    className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 appearance-none cursor-pointer"
+                    required
+                  >
+                    <option value="" disabled>Select how you feel today</option>
+                    <option value="Happy">Happy</option>
+                    <option value="Neutral">Neutral</option>
+                    <option value="Stressed">Stressed</option>
+                    <option value="Sad">Sad</option>
+                  </select>
+                  <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
 
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">Mood:</label>
-            <select
-              name="mood"
-              value={form.mood}
-              onChange={handleChange}
-              className="border p-2 w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-              required
+            <motion.button
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="mt-8 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300"
             >
-              <option value="">Select Mood</option>
-              <option value="Happy">Happy</option>
-              <option value="Neutral">Neutral</option>
-              <option value="Stressed">Stressed</option>
-              <option value="Sad">Sad</option>
-            </select>
-          </div>
+              Analyze My Day <ArrowRight size={18} />
+            </motion.button>
+          </form>
+        </motion.div>
 
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold px-6 py-3 rounded-full w-full hover:scale-105 transform transition-all"
-          >
-            Submit Survey
-          </button>
-        </form>
-      </div>
-
-      {/* ===== Response & Suggestions ===== */}
-      {response && (
-        <div className="mx-auto w-full max-w-3xl p-10 bg-white rounded-3xl shadow-2xl border border-blue-100 mb-20">
-          <h2 className="font-bold text-3xl mb-6 text-center text-blue-800">
-            Your Data & Predictions
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-            <div className="flex items-center gap-2"><span>😰</span><strong>Stress:</strong> <span className={getStressColor(response.data.stress)}>{response.data.stress}</span></div>
-            <div className="flex items-center gap-2"><span>😴</span><strong>Sleep:</strong> {response.data.sleep} hrs</div>
-            <div className="flex items-center gap-2"><span>😊</span><strong>Mood:</strong> {response.data.mood}</div>
-            <div className="flex items-center gap-2"><span>🏃</span><strong>Activity:</strong> {response.data.activity} hrs</div>
-            <div className="flex items-center gap-2"><span>💧</span><strong>Water:</strong> {response.data.water} L</div>
-            <div className="flex items-center gap-2"><span>📚</span><strong>Study:</strong> {response.data.studyHours} hrs</div>
-            <div className="flex items-center gap-2"><span>👨‍👩‍👧</span><strong>Family:</strong> {response.data.familyInteraction} hrs</div>
-            <div className="flex items-center gap-2"><span>💻</span><strong>Screen Time:</strong> {response.data.screenTime} hrs</div>
-          </div>
-
-          <h3 className="font-bold text-2xl mb-4 text-center text-blue-700">Predictions & Recommendations</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {getPredictiveSuggestions(response.data).map((s, i) => (
-              <div
-                key={i}
-                className={`p-5 rounded-2xl shadow-md hover:shadow-xl transition-all ${
-                  s.includes("⚠️")
-                    ? "bg-red-100 text-red-800 font-semibold"
-                    : "bg-green-100 text-green-800 font-semibold"
-                }`}
-              >
-                {s}
+        {/* ===== Response & Suggestions ===== */}
+        <AnimatePresence>
+          {response && (
+            <motion.div 
+              id="results-section"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5 }}
+              className="mt-16 glass-panel p-8 md:p-12 rounded-[2rem] shadow-2xl"
+            >
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4">
+                  <CheckCircle2 size={32} />
+                </div>
+                <h2 className="text-3xl font-bold text-slate-800 mb-2">Analysis Complete</h2>
+                <p className="text-slate-500">Here is a summary of your day and personalized recommendations.</p>
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                {[
+                  { label: "Stress", val: response.data.stress, style: getStressColor(response.data.stress) },
+                  { label: "Sleep", val: `${response.data.sleep}h`, style: "bg-slate-100 text-slate-700 border-slate-200" },
+                  { label: "Mood", val: response.data.mood, style: "bg-indigo-50 text-indigo-700 border-indigo-100" },
+                  { label: "Activity", val: `${response.data.activity}h`, style: "bg-slate-100 text-slate-700 border-slate-200" },
+                  { label: "Water", val: `${response.data.water}L`, style: "bg-blue-50 text-blue-700 border-blue-100" },
+                  { label: "Study", val: `${response.data.studyHours}h`, style: "bg-slate-100 text-slate-700 border-slate-200" },
+                  { label: "Family", val: `${response.data.familyInteraction}h`, style: "bg-pink-50 text-pink-700 border-pink-100" },
+                  { label: "Screen", val: `${response.data.screenTime}h`, style: "bg-slate-100 text-slate-700 border-slate-200" },
+                ].map((item, i) => (
+                  <div key={i} className={`p-4 rounded-2xl border ${item.style} flex flex-col items-center justify-center text-center transition-all hover:scale-105`}>
+                    <span className="text-xs font-semibold uppercase tracking-wider opacity-80 mb-1">{item.label}</span>
+                    <span className="text-xl font-bold">{item.val}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <AlertCircle className="text-indigo-500" /> Recommendations
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {getPredictiveSuggestions(response.data).map((s, i) => {
+                  const isWarning = s.includes("⚠️");
+                  const text = s.replace(/⚠️|🎉/g, "").trim();
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      key={i}
+                      className={`p-5 rounded-2xl border ${
+                        isWarning
+                          ? "bg-red-50 border-red-100 text-red-800"
+                          : "bg-emerald-50 border-emerald-100 text-emerald-800"
+                      } flex gap-3`}
+                    >
+                      <div className="mt-0.5 shrink-0">
+                        {isWarning ? <AlertCircle size={20} /> : <CheckCircle2 size={20} />}
+                      </div>
+                      <p className="text-sm font-medium leading-relaxed">{text}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </main>
     </div>
   );
 }
