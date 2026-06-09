@@ -52,6 +52,10 @@ function SurveyPage() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
+      if (!res.ok) {
+        alert(`Error: ${data.message || "Failed to submit survey"}\n${data.error || ""}`);
+        return;
+      }
       setResponse(data);
       setForm({
         stress: "",
@@ -71,6 +75,7 @@ function SurveyPage() {
       
     } catch (err) {
       console.error(err);
+      alert("Network error: Failed to connect to the server.");
     }
   };
 
