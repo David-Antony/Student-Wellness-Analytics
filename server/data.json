@@ -58,5 +58,29 @@
     "familyInteraction": 6,
     "screenTime": 6,
     "date": "2026-06-08T17:24:51.211Z"
+  },
+  {
+    "_id": "1780940537031",
+    "stress": 6,
+    "sleep": 6,
+    "mood": "Stressed",
+    "activity": 6,
+    "water": 6,
+    "studyHours": 6,
+    "familyInteraction": 6,
+    "screenTime": 6,
+    "date": "2026-06-08T17:42:17.031Z"
+  },
+  {
+    "_id": "1780990825851",
+    "stress": 8,
+    "sleep": 8,
+    "mood": "Happy",
+    "activity": 8,
+    "water": 8,
+    "studyHours": 8,
+    "familyInteraction": 8,
+    "screenTime": 8,
+    "date": "2026-06-09T07:40:25.851Z"
   }
 ]
