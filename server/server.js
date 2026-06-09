@@ -3,12 +3,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const DATA_FILE = path.join(__dirname, "data.json");
+const WellnessEntry = require("./models/WellnessData");
 
 // Helper to read data.json
 function readDataFromFile() {
@@ -32,30 +34,13 @@ function writeDataToFile(data) {
   }
 }
 
-// MongoDB connection settings
-mongoose.set('bufferCommands', false); // Disable buffering so it fails fast when DB is down
-mongoose.connect("mongodb://127.0.0.1:27017/wellnessDB", {
-  serverSelectionTimeoutMS: 2000, // Fail fast if MongoDB is not running
-}).then(() => {
-  console.log("✅ Connected to MongoDB");
-}).catch(err => {
-  console.log("⚠️ MongoDB connection failed. Falling back to local data.json file database.");
-});
-
-// Schema definition
-const wellnessSchema = new mongoose.Schema({
-  stress: Number,             // 1-10
-  sleep: Number,              // hours
-  mood: String,               // happy, sad, neutral, stressed
-  activity: Number,           // hours of physical activity
-  water: Number,              // liters of water intake
-  studyHours: Number,         // hours studied
-  familyInteraction: Number,  // hours with friends/family
-  screenTime: Number,         // hours of screen time
-  date: { type: Date, default: Date.now },
-});
-
-const Wellness = mongoose.model("Wellness", wellnessSchema);
+// MongoDB connection
+mongoose.set('bufferCommands', false);
+mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/StudentWellness", {
+  serverSelectionTimeoutMS: 2000, 
+})
+  .then(() => console.log('✅ Connected to MongoDB Compass successfully!'))
+  .catch((err) => console.log('⚠️ MongoDB connection failed. Falling back to local data.json file.'));
 
 // Helper to check if MongoDB is connected
 function isDbConnected() {
@@ -66,9 +51,9 @@ function isDbConnected() {
 app.post("/api/wellness", async (req, res) => {
   try {
     if (isDbConnected()) {
-      const entry = new Wellness(req.body);
+      const entry = new WellnessEntry(req.body);
       await entry.save();
-      return res.json({ message: "Data saved successfully to MongoDB", data: entry });
+      return res.status(201).json({ message: "Data saved successfully to MongoDB", data: entry });
     } else {
       const allData = readDataFromFile();
       const entry = {
@@ -81,11 +66,11 @@ app.post("/api/wellness", async (req, res) => {
         studyHours: Number(req.body.studyHours),
         familyInteraction: Number(req.body.familyInteraction),
         screenTime: Number(req.body.screenTime),
-        date: new Date(),
+        submittedAt: new Date(),
       };
       allData.push(entry);
       writeDataToFile(allData);
-      return res.json({ message: "Data saved successfully to local file", data: entry });
+      return res.status(201).json({ message: "Data saved successfully to local file", data: entry });
     }
   } catch (err) {
     res.status(500).json({ message: "Error saving data", error: err.message });
@@ -97,7 +82,7 @@ app.get("/api/analytics", async (req, res) => {
   try {
     let allData = [];
     if (isDbConnected()) {
-      allData = await Wellness.find();
+      allData = await WellnessEntry.find();
     } else {
       allData = readDataFromFile();
     }
@@ -180,6 +165,6 @@ app.get("/api/analytics", async (req, res) => {
 });
 
 // Start the server
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
