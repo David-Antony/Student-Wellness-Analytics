@@ -45,13 +45,34 @@ ChartJS.register(
 
 export default function Dashboard() {
   const [analytics, setAnalytics] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/analytics")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch analytics data from server.");
+        return res.json();
+      })
       .then(setAnalytics)
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        setError(err.message || "Failed to connect to the server.");
+      });
   }, []);
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-center">
+        <div className="p-6 bg-rose-50 text-rose-700 rounded-3xl mb-4 border border-rose-100 max-w-md shadow-sm">
+          <svg className="w-12 h-12 mx-auto mb-3 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          <p className="font-bold text-lg">Error Loading Dashboard</p>
+          <p className="text-sm mt-2 text-rose-600/90">{error}</p>
+          <p className="text-xs mt-3 text-slate-500">Make sure your backend server is running on port 8000.</p>
+        </div>
+        <Link to="/" className="text-indigo-600 font-semibold hover:underline">Go Back to Survey</Link>
+      </div>
+    );
+  }
 
   if (!analytics)
     return (
