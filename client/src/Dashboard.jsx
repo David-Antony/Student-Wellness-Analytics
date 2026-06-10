@@ -26,7 +26,8 @@ import {
   BrainCircuit, 
   HeartPulse, 
   LineChart,
-  Lightbulb
+  Lightbulb,
+  Smile
 } from "lucide-react";
 
 ChartJS.register(
