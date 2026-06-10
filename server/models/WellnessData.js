@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the Schema (Structure of our Collection)
+// Schema definition for student wellness logs
 const wellnessSchema = new mongoose.Schema({
   stress: { type: Number, required: true },
   sleep: { type: Number, required: true },
@@ -13,5 +13,4 @@ const wellnessSchema = new mongoose.Schema({
   submittedAt: { type: Date, default: Date.now }
 });
 
-// This creates a collection named "wellnessentries" (Mongoose automatically lowercases and pluralizes it)
 module.exports = mongoose.model('WellnessEntry', wellnessSchema);

@@ -47,7 +47,7 @@ function isDbConnected() {
   return mongoose.connection.readyState === 1;
 }
 
-// ✅ POST route to save survey data
+// Save wellness survey data
 app.post("/api/wellness", async (req, res) => {
   try {
     if (isDbConnected()) {
@@ -77,7 +77,7 @@ app.post("/api/wellness", async (req, res) => {
   }
 });
 
-// ✅ GET route to fetch analytics
+// Fetch analytics overview
 app.get("/api/analytics", async (req, res) => {
   try {
     let allData = [];

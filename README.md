@@ -153,14 +153,14 @@ If you prefer to run and view logs for the client and server in separate termina
 
 | Daily Wellness Check Form | Wellness Insights Dashboard |
 | --- | --- |
-| ![Survey Form Placeholder](./client/src/banner.png) | ![Analytics Dashboard Placeholder](./client/src/banner.png) |
+| ![Daily Wellness Check](https://placehold.co/600x400?text=Daily+Wellness+Check) | ![Analytics Dashboard](https://placehold.co/600x400?text=Analytics+Dashboard) |
 
 ---
 
 ## 7. Live Demo
 
-The project is hosted and can be viewed live at:  
-👉 **[Live Demo URL](https://your-live-demo-link.com)** *(Placeholder)*
+The project can be configured for deployment. Once hosted, you can add your link here:  
+👉 **[Live Demo URL](https://github.com/David-Antony/Student-Wellness-Analytics)** *(Insert your deployed application URL)*
 
 ---
 
