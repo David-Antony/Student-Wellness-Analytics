@@ -49,7 +49,7 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8001";
     fetch(`${apiBaseUrl}/api/analytics`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch analytics data from server.");
@@ -320,7 +320,7 @@ export default function Dashboard() {
   else suggestions.push({ type: "success", text: "Your study habits are well-balanced." });
 
   const metrics = [
-    { label: "Total Submissions", value: analytics.total, icon: <LineChart className="text-indigo-500" /> },
+    { label: "Total Submissions", value: analytics.total, icon: <Activity className="text-indigo-500" /> },
     { label: "Avg Stress", value: analytics.avgStress.toFixed(2), icon: <BrainCircuit className="text-rose-500" /> },
     { label: "Avg Sleep (hrs)", value: analytics.avgSleep.toFixed(2), icon: <Moon className="text-violet-500" /> },
     { label: "Avg Activity (hrs)", value: analytics.avgActivity.toFixed(2), icon: <Activity className="text-emerald-500" /> },
