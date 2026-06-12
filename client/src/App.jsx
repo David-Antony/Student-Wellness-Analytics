@@ -168,105 +168,109 @@ function SurveyPage() {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-200/50 blur-[100px] -z-10 pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10 pointer-events-none"></div>
 
-      {/* ===== Hero Section ===== */}
-      <header className="relative z-10 pt-20 pb-12 px-6 flex flex-col items-center justify-center text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
-            Student Wellness <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
-              Analytics
-            </span>
-          </h1>
-          <p className="max-w-2xl text-lg text-slate-600 mb-8 mx-auto">
-            Track your daily habits, understand your emotional well-being, and get AI-driven personalized recommendations to improve your academic and personal life.
-          </p>
-          <Link
-            to="/dashboard"
-            className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:-translate-y-0.5 transition-all duration-300"
+      {/* ===== Layout Split ===== */}
+      <section className="grid md:grid-cols-2 gap-8 px-6 py-12 max-w-7xl mx-auto">
+        {/* Left – Heading */}
+        <div className="flex flex-col items-start justify-center text-left space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            View Dashboard Analytics <ArrowRight size={18} />
-          </Link>
-        </motion.div>
-      </header>
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-2">
+              Student Wellness <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
+                Analytics
+              </span>
+            </h1>
+            <p className="max-w-md text-lg text-slate-600 mb-4">
+              Track your daily habits, understand your emotional well‑being, and get AI‑driven personalized recommendations to improve your academic and personal life.
+            </p>
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              View Dashboard Analytics <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+        </div>
 
-      {/* ===== Survey Form ===== */}
-      <main className="px-6 pb-24 max-w-3xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass-panel p-8 md:p-12 rounded-[2rem] shadow-xl"
-        >
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-slate-800">Daily Wellness Check</h2>
-            <p className="text-slate-500 mt-2">Log your daily metrics to receive insights.</p>
-          </div>
+        {/* Right – Survey Form */}
+        <main className="px-0 max-w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass-panel p-8 md:p-12 rounded-[2rem] shadow-xl"
+          >
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-slate-800">Daily Wellness Check</h2>
+              <p className="text-slate-500 mt-2">Log your daily metrics to receive insights.</p>
+            </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {fields.map((field, idx) => (
-                <div key={field.name} className="relative group">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {fields.map((field, idx) => (
+                  <div key={field.name} className="relative group">
+                    <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                      {field.icon}
+                      {field.label}
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name={field.name}
+                        min={field.min}
+                        max={field.max}
+                        step={field.step || 1}
+                        value={form[field.name]}
+                        onChange={handleChange}
+                        placeholder="0"
+                        className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                        required
+                      />
+                    </div>
+                  </div>
+                ))}
+
+                <div className="relative group md:col-span-2">
                   <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
-                    {field.icon}
-                    {field.label}
+                    <Smile className="text-indigo-500" />
+                    Overall Mood
                   </label>
                   <div className="relative">
-                    <input
-                      type="number"
-                      name={field.name}
-                      min={field.min}
-                      max={field.max}
-                      step={field.step || 1}
-                      value={form[field.name]}
+                    <select
+                      name="mood"
+                      value={form.mood}
                       onChange={handleChange}
-                      placeholder="0"
-                      className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                      className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 appearance-none cursor-pointer"
                       required
-                    />
-                  </div>
-                </div>
-              ))}
-
-              <div className="relative group md:col-span-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
-                  <Smile className="text-indigo-500" />
-                  Overall Mood
-                </label>
-                <div className="relative">
-                  <select
-                    name="mood"
-                    value={form.mood}
-                    onChange={handleChange}
-                    className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 appearance-none cursor-pointer"
-                    required
-                  >
-                    <option value="" disabled>Select how you feel today</option>
-                    <option value="Happy">Happy</option>
-                    <option value="Neutral">Neutral</option>
-                    <option value="Stressed">Stressed</option>
-                    <option value="Sad">Sad</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    >
+                      <option value="" disabled>Select how you feel today</option>
+                      <option value="Happy">Happy</option>
+                      <option value="Neutral">Neutral</option>
+                      <option value="Stressed">Stressed</option>
+                      <option value="Sad">Sad</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="mt-8 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300"
-            >
-              Analyze My Day <ArrowRight size={18} />
-            </motion.button>
-          </form>
-        </motion.div>
+              <motion.button
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                className="mt-8 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300"
+              >
+                Analyze My Day <ArrowRight size={18} />
+              </motion.button>
+            </form>
+          </motion.div>
+        </main>
+      </section>
 
         {/* ===== Response & Suggestions ===== */}
         <AnimatePresence>
