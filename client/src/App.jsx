@@ -268,8 +268,8 @@ function SurveyPage() {
                 Analyze My Day <ArrowRight size={18} />
               </motion.button>
             </form>
-          </motion.div>
-        </main>
+          </motion.div></main>
+        
       </section>
 
         {/* ===== Response & Suggestions ===== */}
@@ -340,7 +340,6 @@ function SurveyPage() {
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
     </div>
   );
 }
