@@ -163,7 +163,18 @@ function SurveyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 relative overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50/80 font-sans text-slate-900 relative overflow-x-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-20 opacity-30 pointer-events-none"
+      >
+        <source src="YOUR_VIDEO_URL_HERE" type="video/mp4" />
+      </video>
+
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-200/50 blur-[100px] -z-10 pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10 pointer-events-none"></div>
