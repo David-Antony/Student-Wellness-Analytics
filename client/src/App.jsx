@@ -163,7 +163,7 @@ function SurveyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50/10 font-sans text-slate-900 relative overflow-x-hidden">
+    <div className="min-h-screen md:h-screen md:overflow-hidden bg-slate-50/10 font-sans text-slate-100 relative overflow-x-hidden flex flex-col justify-center">
       {/* Background Video */}
       <video
         autoPlay
@@ -180,26 +180,26 @@ function SurveyPage() {
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10 pointer-events-none"></div>
 
       {/* ===== Layout Split ===== */}
-      <section className="grid md:grid-cols-2 gap-8 px-6 py-12 max-w-7xl mx-auto">
+      <section className="grid md:grid-cols-2 gap-6 px-6 py-4 max-w-7xl mx-auto w-full items-center">
         {/* Left – Heading */}
-        <div className="flex flex-col items-start justify-center text-left space-y-6">
+        <div className="flex flex-col items-start justify-center text-left space-y-4">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-2">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2">
               Student Wellness <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
                 Analytics
               </span>
             </h1>
-            <p className="max-w-md text-lg text-slate-600 mb-4">
+            <p className="max-w-md text-base text-slate-200 mb-4">
               Track your daily habits, understand your emotional well‑being, and get AI‑driven personalized recommendations to improve your academic and personal life.
             </p>
             <Link
               to="/dashboard"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:-translate-y-0.5 transition-all duration-300"
             >
               View Dashboard Analytics <ArrowRight size={18} />
             </Link>
@@ -212,18 +212,18 @@ function SurveyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-panel p-8 md:p-12 rounded-[2rem] shadow-xl"
+            className="glass-panel p-5 md:p-6 rounded-2xl shadow-xl"
           >
-            <div className="text-center mb-10">
-              <h2 className="text-2xl font-bold text-slate-800">Daily Wellness Check</h2>
-              <p className="text-slate-500 mt-2">Log your daily metrics to receive insights.</p>
+            <div className="text-center mb-4">
+              <h2 className="text-xl font-bold text-slate-800">Daily Wellness Check</h2>
+              <p className="text-xs text-slate-500 mt-1">Log your daily metrics to receive insights.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {fields.map((field, idx) => (
                   <div key={field.name} className="relative group">
-                    <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                    <label className="flex items-center gap-2 text-xs font-medium text-slate-700 mb-1">
                       {field.icon}
                       {field.label}
                     </label>
@@ -237,7 +237,7 @@ function SurveyPage() {
                         value={form[field.name]}
                         onChange={handleChange}
                         placeholder="0"
-                        className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                        className="w-full bg-white/50 border border-slate-200 px-3 py-1.5 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400 text-sm"
                         required
                       />
                     </div>
@@ -245,7 +245,7 @@ function SurveyPage() {
                 ))}
 
                 <div className="relative group md:col-span-2">
-                  <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                  <label className="flex items-center gap-2 text-xs font-medium text-slate-700 mb-1">
                     <Smile className="text-indigo-500" />
                     Overall Mood
                   </label>
@@ -254,7 +254,7 @@ function SurveyPage() {
                       name="mood"
                       value={form.mood}
                       onChange={handleChange}
-                      className="w-full bg-white/50 border border-slate-200 px-4 py-3 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 appearance-none cursor-pointer"
+                      className="w-full bg-white/50 border border-slate-200 px-3 py-1.5 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-800 appearance-none cursor-pointer text-sm"
                       required
                     >
                       <option value="" disabled>Select how you feel today</option>
@@ -263,7 +263,7 @@ function SurveyPage() {
                       <option value="Stressed">Stressed</option>
                       <option value="Sad">Sad</option>
                     </select>
-                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                    <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
                       <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/></svg>
                     </div>
                   </div>
@@ -274,9 +274,9 @@ function SurveyPage() {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="mt-8 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300"
+                className="mt-4 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300 text-sm"
               >
-                Analyze My Day <ArrowRight size={18} />
+                Analyze My Day <ArrowRight size={16} />
               </motion.button>
             </form>
           </motion.div></main>
