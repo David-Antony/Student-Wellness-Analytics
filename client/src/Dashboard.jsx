@@ -2,20 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Bar, Pie, Doughnut, Line, Radar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  RadialLinearScale,
-  Filler
-} from "chart.js";
+import { Chart as ChartJS, registerables } from "chart.js";
 import { 
   ArrowLeft, 
   Activity, 
@@ -27,22 +14,11 @@ import {
   HeartPulse, 
   LineChart,
   Lightbulb,
-  Smile
+  Smile,
+  Radar as RadarIcon
 } from "lucide-react";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-  RadialLinearScale,
-  Filler
-);
+ChartJS.register(...registerables);
 
 export default function Dashboard() {
   const [analytics, setAnalytics] = useState(null);
@@ -121,12 +97,15 @@ export default function Dashboard() {
   };
 
   const pieOptions = {
-    ...chartOptions,
-    scales: undefined
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: chartOptions.plugins
   };
 
   const radarOptions = {
-    ...chartOptions,
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: chartOptions.plugins,
     scales: {
       r: {
         ticks: { display: false },
@@ -474,7 +453,7 @@ export default function Dashboard() {
             className="bg-white/60 backdrop-blur-xl border border-slate-200/60 p-6 rounded-3xl shadow-sm"
           >
             <div className="flex items-center gap-2 mb-6">
-              <Radar className="text-indigo-500" />
+              <RadarIcon className="text-indigo-500" />
               <h3 className="font-bold text-lg text-slate-800">Wellness Balance Overview</h3>
             </div>
             <div className="h-[300px] w-full flex justify-center">
