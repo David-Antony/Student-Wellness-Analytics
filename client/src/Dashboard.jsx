@@ -99,13 +99,35 @@ export default function Dashboard() {
   const pieOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: chartOptions.plugins
+    plugins: {
+      legend: {
+        position: "right",
+        align: "center",
+        labels: {
+          font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+          usePointStyle: true,
+          padding: 15
+        }
+      },
+      tooltip: chartOptions.plugins.tooltip
+    }
   };
 
   const radarOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: chartOptions.plugins,
+    plugins: {
+      legend: {
+        position: "right",
+        align: "center",
+        labels: {
+          font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+          usePointStyle: true,
+          padding: 15
+        }
+      },
+      tooltip: chartOptions.plugins.tooltip
+    },
     scales: {
       r: {
         ticks: { display: false },
@@ -299,13 +321,13 @@ export default function Dashboard() {
   else suggestions.push({ type: "success", text: "Your study habits are well-balanced." });
 
   const metrics = [
-    { label: "Total Submissions", value: analytics.total, icon: <Activity className="text-indigo-500" /> },
-    { label: "Avg Stress", value: analytics.avgStress.toFixed(2), icon: <BrainCircuit className="text-rose-500" /> },
-    { label: "Avg Sleep (hrs)", value: analytics.avgSleep.toFixed(2), icon: <Moon className="text-violet-500" /> },
-    { label: "Avg Activity (hrs)", value: analytics.avgActivity.toFixed(2), icon: <Activity className="text-emerald-500" /> },
-    { label: "Avg Study (hrs)", value: analytics.avgStudy.toFixed(2), icon: <BookOpen className="text-amber-500" /> },
-    { label: "Avg Family (hrs)", value: analytics.avgFamily.toFixed(2), icon: <Users className="text-pink-500" /> },
-    { label: "Avg Water (L)", value: analytics.avgWater.toFixed(2), icon: <Droplets className="text-blue-500" /> },
+    { label: "Total Submissions", value: analytics.total, icon: <Activity className="text-indigo-500" size={18} /> },
+    { label: "Avg Stress", value: analytics.avgStress.toFixed(2), icon: <BrainCircuit className="text-rose-500" size={18} /> },
+    { label: "Avg Sleep (hrs)", value: analytics.avgSleep.toFixed(2), icon: <Moon className="text-violet-500" size={18} /> },
+    { label: "Avg Activity (hrs)", value: analytics.avgActivity.toFixed(2), icon: <Activity className="text-emerald-500" size={18} /> },
+    { label: "Avg Study (hrs)", value: analytics.avgStudy.toFixed(2), icon: <BookOpen className="text-amber-500" size={18} /> },
+    { label: "Avg Family (hrs)", value: analytics.avgFamily.toFixed(2), icon: <Users className="text-pink-500" size={18} /> },
+    { label: "Avg Water (L)", value: analytics.avgWater.toFixed(2), icon: <Droplets className="text-blue-500" size={18} /> },
   ];
 
   return (
@@ -343,22 +365,22 @@ export default function Dashboard() {
         </motion.div>
 
         {/* Summary Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
           {metrics.map((metric, i) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
               key={metric.label}
-              className="bg-white/60 backdrop-blur-xl border border-slate-200/60 p-5 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all"
+              className="bg-white/60 backdrop-blur-xl border border-slate-200/60 p-3.5 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all"
             >
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">{metric.label}</h2>
-                <div className="p-2 bg-slate-50 rounded-lg">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{metric.label}</h2>
+                <div className="p-1.5 bg-slate-50 rounded-lg">
                   {metric.icon}
                 </div>
               </div>
-              <p className="text-3xl font-bold text-slate-800">{metric.value}</p>
+              <p className="text-xl font-bold text-slate-800">{metric.value}</p>
             </motion.div>
           ))}
         </div>
@@ -375,7 +397,7 @@ export default function Dashboard() {
               <Smile className="text-violet-500" />
               <h3 className="font-bold text-lg text-slate-800">Mood Distribution</h3>
             </div>
-            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
+            <div className="h-[230px] w-full max-w-[420px] mx-auto flex justify-center">
               <Pie data={moodPieData} options={pieOptions} />
             </div>
           </motion.div>
@@ -390,7 +412,7 @@ export default function Dashboard() {
               <Moon className="text-indigo-500" />
               <h3 className="font-bold text-lg text-slate-800">Sleep Quality</h3>
             </div>
-            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
+            <div className="h-[230px] w-full max-w-[420px] mx-auto flex justify-center">
               <Doughnut data={sleepDoughnutData} options={pieOptions} />
             </div>
           </motion.div>
@@ -456,7 +478,7 @@ export default function Dashboard() {
               <RadarIcon className="text-indigo-500" />
               <h3 className="font-bold text-lg text-slate-800">Wellness Balance Overview</h3>
             </div>
-            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
+            <div className="h-[230px] w-full max-w-[420px] mx-auto flex justify-center">
               <Radar data={radarData} options={radarOptions} />
             </div>
           </motion.div>
@@ -489,8 +511,8 @@ export default function Dashboard() {
               <HeartPulse className="text-emerald-500" />
               <h3 className="font-bold text-lg text-slate-800">Overall Happiness Index</h3>
             </div>
-            <div className="h-[190px] w-full max-w-[280px] mx-auto flex justify-center relative">
-              <Doughnut data={happinessGaugeData} options={{...pieOptions, cutout: '80%'}} />
+            <div className="h-[190px] w-full max-w-[300px] mx-auto flex justify-center relative">
+              <Doughnut data={happinessGaugeData} options={{...pieOptions, cutout: '80%', plugins: {...pieOptions.plugins, legend: { display: false }}}} />
               <div className="absolute inset-0 flex flex-col items-center justify-center mt-12">
                 <span className="text-5xl font-black text-slate-800">{happinessScore}%</span>
                 <span className="text-sm font-medium text-slate-500 uppercase tracking-widest mt-1">Score</span>
