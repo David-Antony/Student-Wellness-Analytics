@@ -375,7 +375,7 @@ export default function Dashboard() {
               <Smile className="text-violet-500" />
               <h3 className="font-bold text-lg text-slate-800">Mood Distribution</h3>
             </div>
-            <div className="h-[300px] flex justify-center">
+            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
               <Pie data={moodPieData} options={pieOptions} />
             </div>
           </motion.div>
@@ -390,7 +390,7 @@ export default function Dashboard() {
               <Moon className="text-indigo-500" />
               <h3 className="font-bold text-lg text-slate-800">Sleep Quality</h3>
             </div>
-            <div className="h-[300px] flex justify-center">
+            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
               <Doughnut data={sleepDoughnutData} options={pieOptions} />
             </div>
           </motion.div>
@@ -408,7 +408,7 @@ export default function Dashboard() {
               <Activity className="text-emerald-500" />
               <h3 className="font-bold text-lg text-slate-800">Average Metrics vs Recommended</h3>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[230px] w-full">
               <Bar data={avgBarData} options={chartOptions} />
             </div>
           </motion.div>
@@ -423,7 +423,7 @@ export default function Dashboard() {
               <BrainCircuit className="text-rose-500" />
               <h3 className="font-bold text-lg text-slate-800">Stress Level Trend</h3>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[230px] w-full">
               <Line data={stressLineData} options={chartOptions} />
             </div>
           </motion.div>
@@ -441,7 +441,7 @@ export default function Dashboard() {
               <Droplets className="text-blue-500" />
               <h3 className="font-bold text-lg text-slate-800">Sleep vs Water Intake</h3>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[230px] w-full">
               <Bar data={waterSleepBarData} options={chartOptions} />
             </div>
           </motion.div>
@@ -456,7 +456,7 @@ export default function Dashboard() {
               <RadarIcon className="text-indigo-500" />
               <h3 className="font-bold text-lg text-slate-800">Wellness Balance Overview</h3>
             </div>
-            <div className="h-[300px] w-full flex justify-center">
+            <div className="h-[230px] w-full max-w-[280px] mx-auto flex justify-center">
               <Radar data={radarData} options={radarOptions} />
             </div>
           </motion.div>
@@ -474,7 +474,7 @@ export default function Dashboard() {
               <LineChart className="text-amber-500" />
               <h3 className="font-bold text-lg text-slate-800">Correlation Strengths</h3>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[230px] w-full">
               <Bar data={correlationBarData} options={chartOptions} />
             </div>
           </motion.div>
@@ -489,9 +489,9 @@ export default function Dashboard() {
               <HeartPulse className="text-emerald-500" />
               <h3 className="font-bold text-lg text-slate-800">Overall Happiness Index</h3>
             </div>
-            <div className="h-[250px] flex justify-center relative">
+            <div className="h-[190px] w-full max-w-[280px] mx-auto flex justify-center relative">
               <Doughnut data={happinessGaugeData} options={{...pieOptions, cutout: '80%'}} />
-              <div className="absolute inset-0 flex flex-col items-center justify-center mt-10">
+              <div className="absolute inset-0 flex flex-col items-center justify-center mt-12">
                 <span className="text-5xl font-black text-slate-800">{happinessScore}%</span>
                 <span className="text-sm font-medium text-slate-500 uppercase tracking-widest mt-1">Score</span>
               </div>
