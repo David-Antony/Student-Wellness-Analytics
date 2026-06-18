@@ -155,6 +155,18 @@ If you prefer to run and view logs for the client and server in separate termina
 | --- | --- |
 | ![Daily Wellness Check](https://placehold.co/600x400?text=Daily+Wellness+Check) | ![Analytics Dashboard](https://placehold.co/600x400?text=Analytics+Dashboard) |
 
+# Dashboard
+
+![Dashboard](proofs/Data_Analysis_Dashboard1.png)
+
+# Analytics
+
+![Analytics](proofs/Data_Analysis_Dashboard2.png)
+
+# MongoDB Data
+
+![MongoDB](proofs/Data_Analysis_Analysed_Data.png)
+
 ---
 
 ## 7. Live Demo
