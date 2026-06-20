@@ -46,7 +46,7 @@ function SurveyPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8001";
+      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
       const res = await fetch(`${apiBaseUrl}/api/wellness`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -179,7 +179,7 @@ function SurveyPage() {
       <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-200/50 blur-[100px] -z-10 pointer-events-none"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-200/50 blur-[100px] -z-10 pointer-events-none"></div>
 
-      {/* ===== Page Content Flow ===== */}
+      {/* Page Content Flow */}
       <AnimatePresence mode="wait">
         {!response ? (
           <motion.section 

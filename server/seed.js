@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const WellnessEntry = require("./models/WellnessData");
 
-// CHANGE THIS TO YOUR MONGODB CONNECTION STRING
+// MongoDB connection string for local development
 mongoose.connect("mongodb://127.0.0.1:27017/StudentWellness");
 
 

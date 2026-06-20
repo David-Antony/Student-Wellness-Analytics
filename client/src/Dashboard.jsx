@@ -25,7 +25,7 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8001";
+    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
     fetch(`${apiBaseUrl}/api/analytics`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch analytics data from server.");
