@@ -161,7 +161,7 @@ If you prefer to run and view logs for the client and server in separate termina
 
 # MongoDB Data
 
-![MongoDB](Proofs/Data_Analysis_Analysed Data.png)
+![MongoDB](Proofs/Data_Analysis_Analysed_Data.png)
 
 ---
 
