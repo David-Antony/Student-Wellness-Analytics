@@ -157,11 +157,11 @@ If you prefer to run and view logs for the client and server in separate termina
 
 # Dashboard
 
-![Dashboard](proofs/Data_Analysis_Dashboard1.png)
+![Dashboard](Proofs/Data_Analysis_Dashboard1.png)
 
 # MongoDB Data
 
-![MongoDB](proofs/Data_Analysis_Analysed_Data.png)
+![MongoDB](Proofs/Data_Analysis_Analysed_Data.png)
 
 ---
 
