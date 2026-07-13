@@ -163,6 +163,12 @@ If you prefer to run and view logs for the client and server in separate termina
 
 ![MongoDB](Proofs/Data_Analysis_Analysed_Data.png)
 
+# Dashboard
+<img src="Proofs/Data_Analysis_Dashboard1.png" width="700" alt="Dashboard"/>
+
+# MongoDB Data
+<img src="Proofs/Data_Analysis_Analysed_Data.png" width="700" alt="MongoDB Data"/>
+
 ---
 
 ## 7. Live Demo
