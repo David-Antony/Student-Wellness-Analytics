@@ -153,7 +153,8 @@ If you prefer to run and view logs for the client and server in separate termina
 
 | Daily Wellness Check Form | Wellness Insights Dashboard |
 | --- | --- |
-| ![Daily Wellness Check](Proofs/Data_Analysis_Home_Page.png/600x400?text=Daily+Wellness+Check) | ![Analytics Dashboard](Proofs/Data_Analysis_Dashboard1.png) |
+| ![Daily Wellness Check](Proofs/Data_Analysis_Home_Page.png/600x400?text=Daily+Wellness+Check) | ![Analytics Dashboard](<img src="Proofs/Data_Analysis_Analysed_Data.png" width="700" alt="MongoDB Data"/>
+) |
 
 # Dashboard
 
