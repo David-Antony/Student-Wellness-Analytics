@@ -157,7 +157,7 @@ If you prefer to run and view logs for the client and server in separate termina
 
 # Dashboard
 
-![Dashboard](Proofs/Data_Analysis_Dashboard1.png)
+![Dashboard](Proofs/Data_Analysis_Dashboard1.png/600x400)
 
 # MongoDB Data
 
