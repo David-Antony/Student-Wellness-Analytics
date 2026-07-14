@@ -152,7 +152,7 @@ If you prefer to run and view logs for the client and server in separate termina
 ## 6. Screenshots
 | Daily Wellness Check Form | Wellness Insights Dashboard |
 | --- | --- |
-| <img src="Proofs/Data_Analysis_Home_Page.png" width="600" height="400" alt="Daily Wellness Check"/> | <img src="Proofs/Data_Analysis_Data.png" width="600" height="400" alt="Analytics Dashboard"/> |
+| <img src="Proofs/Data_Analysis_Home_Page.png" width="600" height="400" alt="Daily Wellness Check"/> | <img src="Proofs/Data_Analysis_Analysed_Data.png" width="600" height="400" alt="Analytics Dashboard"/> |
 
 | Dashboard | MongoDB Data |
 | --- | --- |
