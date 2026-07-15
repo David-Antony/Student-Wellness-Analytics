@@ -160,15 +160,9 @@ If you prefer to run and view logs for the client and server in separate termina
 
 ---
 
-## 7. Live Demo
+## 7. Future Improvements
 
-The project can be configured for deployment. Once hosted, you can add your link here:  
-👉 **[Live Demo URL](https://github.com/David-Antony/Student-Wellness-Analytics)** *(Insert your deployed application URL)*
-
----
-
-## 8. Future Improvements
-
+*   **Deplooyment:** Planned to deploy this with massive dataset and for accurate dashboard analytics
 *   **User Profiles & Secure Authentication:** Fully implement JWT and Bcryptjs for secure logins, allowing students to keep their wellness logs private.
 *   **Custom Date Range Filtering:** Add calendar-based filters to analyze trends over a specific week, month, or semester.
 *   **Report Generation:** Provide an option to export weekly wellness summaries as PDF or CSV reports.
