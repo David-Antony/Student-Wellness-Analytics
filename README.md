@@ -150,11 +150,11 @@ If you prefer to run and view logs for the client and server in separate termina
 ---
 
 ## 6. Screenshots
-| Daily Wellness Check Form | Pearsonal Analysis |
+| Daily Wellness Check Form | Personal Analysis |
 | --- | --- |
 | <img src="Proofs/Data_Analysis_Home_Page.png" width="600" height="400" alt="Daily Wellness Check"/> | <img src="Proofs/Data_Analysis_Analysed_Data.png" width="600" height="400" alt="Pearsonal Analysis"/> |
 
-| Dashboard | Pearsonalised Insights |
+| Dashboard | Personalised Insights |
 | --- | --- |
 | <img src="Proofs/Data_Analysis_Dashboard1.png" width="600" height="400" alt="Dashboard"/> | <img src="Proofs/Data_Analysis_Dashboard4.png" width="600" height="400" alt="Pearsonalised Insights"/> |
 
@@ -162,7 +162,7 @@ If you prefer to run and view logs for the client and server in separate termina
 
 ## 7. Future Improvements
 
-*   **Deplooyment:** Planned to deploy this with massive dataset and for accurate dashboard analytics
+*   **Deployment:** Planned to deploy this with massive dataset and for accurate dashboard analytics
 *   **User Profiles & Secure Authentication:** Fully implement JWT and Bcryptjs for secure logins, allowing students to keep their wellness logs private.
 *   **Custom Date Range Filtering:** Add calendar-based filters to analyze trends over a specific week, month, or semester.
 *   **Report Generation:** Provide an option to export weekly wellness summaries as PDF or CSV reports.
